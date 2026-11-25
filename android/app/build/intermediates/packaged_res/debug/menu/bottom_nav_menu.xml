@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/relativesFragment"
+        android:icon="@drawable/ic_family"
+        android:title="@string/nav_relatives" />
+    <item
+        android:id="@+id/enrollFragment"
+        android:icon="@drawable/ic_mic"
+        android:title="@string/nav_enroll" />
+    <item
+        android:id="@+id/qrGeneratorFragment"
+        android:icon="@drawable/ic_qr_code"
+        android:title="@string/nav_qr" />
+    <item
+        android:id="@+id/setupFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/nav_setup" />
+</menu>

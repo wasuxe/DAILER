@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/activity_dialer.xml",
+        "source": "com.dailer.app-main-67:/layout/activity_dialer.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_qr_generator.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_qr_generator.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/item_relative.xml",
+        "source": "com.dailer.app-main-67:/layout/item_relative.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/activity_main.xml",
+        "source": "com.dailer.app-main-67:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_setup.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_setup.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_relatives.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_relatives.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_enroll.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_enroll.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_in_call.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_in_call.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/view_verification_banner.xml",
+        "source": "com.dailer.app-main-67:/layout/view_verification_banner.xml"
+    }
+]

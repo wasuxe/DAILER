@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dailer</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_relatives">Family</string>
+    <string name="nav_enroll">Enroll</string>
+    <string name="nav_qr">Invite QR</string>
+    <string name="nav_setup">Setup</string>
+
+    <!-- Setup Screen -->
+    <string name="setup_title">Protect Your Calls</string>
+    <string name="setup_subtitle">Dailer detects AI voice cloning scams on incoming phone calls from loved ones.</string>
+    <string name="setup_step_1_title">1. Set Default Phone App</string>
+    <string name="setup_step_2_title">2. Verification Server URL</string>
+    <string name="setup_step_3_title">3. Grant Required Permissions</string>
+    <string name="setup_step_4_title">4. Complete Setup</string>
+    <string name="setup_server_url_hint">Backend Server URL (e.g. http://10.0.2.2:5000/)</string>
+    <string name="btn_save_server_url">Save Server URL</string>
+    <string name="status_server_configured">Server URL saved: %1$s</string>
+    <string name="status_server_invalid">Enter a valid http:// or https:// server URL</string>
+    <string name="btn_grant_permissions">Grant Required Permissions</string>
+    <string name="btn_set_default_dialer">Set Dailer as Default Phone App</string>
+    <string name="btn_continue">Complete Setup</string>
+    <string name="btn_open_dialer">Open Phone Dialer</string>
+    <string name="status_permissions_pending">Permissions needed: Microphone, Phone, Contacts, Camera</string>
+    <string name="status_permissions_granted">All required permissions granted</string>
+    <string name="status_dialer_pending">Dailer is not yet the default phone app</string>
+    <string name="status_dialer_granted">Dailer is active as default phone app</string>
+    <string name="status_setup_ready">All setup steps look good. Tap below to finish.</string>
+    <string name="status_setup_incomplete">Complete the steps above to enable full call protection.</string>
+
+    <!-- Relatives Screen -->
+    <string name="relatives_title">Trusted Family Voices</string>
+    <string name="relatives_empty">No trusted relatives enrolled yet. Tap + to enroll a family member or share an invite QR code.</string>
+    <string name="btn_add_relative">Enroll Relative</string>
+    <string name="btn_generate_qr">Share QR Invite</string>
+    <string name="btn_remove_relative">Remove</string>
+    <string name="badge_enrolled">Verified Voiceprint</string>
+    <string name="relative_removed">Removed %1$s from trusted voices</string>
+    <string name="action_undo">Undo</string>
+
+    <!-- Enrollment Screen -->
+    <string name="enroll_title">Enroll Trusted Relative</string>
+    <string name="enroll_name_hint">Relative Name (e.g., Sarah)</string>
+    <string name="enroll_phone_hint">Phone Number (E.164 format, e.g. +15551234567)</string>
+    <string name="enroll_relationship_hint">Relationship (e.g., Daughter, Son, Grandchild)</string>
+    <string name="enroll_passphrase_label">Please read this passphrase aloud clearly:</string>
+    <string name="enroll_prompt">\"Hi Mom and Dad, this is my real voice calling to check in on you today.\"</string>
+    <string name="enroll_consent_text">I consent to storing my voiceprint locally and on our family server for scam protection.</string>
+    <string name="btn_start_recording">Start Voice Sample</string>
+    <string name="btn_stop_recording">Stop Recording</string>
+    <string name="btn_submit_enrollment">Enroll Voiceprint</string>
+    <string name="btn_scan_qr">Scan Enrollment QR</string>
+    <string name="recording_status_idle">Tap Start and read the passphrase for ~10 seconds</string>
+    <string name="recording_status_active">Recording voice sample…</string>
+    <string name="recording_status_done">Voice sample ready (%1$s)</string>
+
+    <!-- QR Generator Screen -->
+    <string name="qr_title">Family Enrollment QR Code</string>
+    <string name="qr_instructions">Enter your relative\'s details to create an invite QR code and shareable enrollment link.</string>
+    <string name="btn_generate_qr_code">Generate QR Invite</string>
+    <string name="btn_regenerate_qr">Regenerate Invite</string>
+    <string name="btn_share_invite">Share Invite Link</string>
+    <string name="qr_share_subject">Dailer Family Voice Protection Invite</string>
+    <string name="qr_share_message">Hi %1$s, tap this link in Dailer to enroll your voiceprint for scam protection:\n%2$s</string>
+
+    <!-- Dialer & In-Call Screen -->
+    <string name="dialer_title">Dailer Phone</string>
+    <string name="dialer_hint">Enter phone number</string>
+    <string name="btn_call">Call</string>
+    <string name="btn_answer">Answer</string>
+    <string name="btn_decline">Decline</string>
+    <string name="btn_hangup">End Call</string>
+    <string name="btn_mute">Mute</string>
+    <string name="btn_unmute">Unmute</string>
+    <string name="btn_speaker">Speaker</string>
+    <string name="btn_backspace">Backspace</string>
+    <string name="call_state_ringing">Incoming Call…</string>
+    <string name="call_state_dialing">Calling…</string>
+    <string name="call_state_active">Call in Progress</string>
+    <string name="call_state_ended">Call Ended</string>
+    <string name="unknown_caller">Unknown Caller</string>
+
+    <!-- Verification Banner -->
+    <string name="banner_verifying_title">Verifying Voice Authenticity…</string>
+    <string name="banner_verifying_subtitle">Analyzing live speech against trusted voiceprint</string>
+    <string name="banner_verified_title">Verified Family Voice</string>
+    <string name="banner_verified_named_title">Verified: %1$s</string>
+    <string name="banner_verified_subtitle">Voice matches enrolled relative and shows natural human speech</string>
+    <string name="banner_warning_title">WARNING: Possible AI Voice Scam</string>
+    <string name="banner_warning_named_title">WARNING: Possible AI Clone of %1$s</string>
+    <string name="banner_warning_subtitle">Synthetic speech or voice mismatch detected. Hang up and call back directly.</string>
+    <string name="banner_unknown_title">Unenrolled Caller</string>
+    <string name="banner_unknown_subtitle">This caller does not have an enrolled voiceprint</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Call Voice Protection</string>
+    <string name="notification_verdict_channel_name">Voice Verification Results</string>
+    <string name="notification_verdict_channel_desc">Status updates when a caller voice is verified</string>
+    <string name="notification_alert_channel_name">AI Scam Alerts</string>
+    <string name="notification_alert_channel_desc">High-priority warnings when synthetic or cloned speech is detected</string>
+    <string name="notification_recording_title">Dailer Voice Shield Active</string>
+    <string name="notification_recording_text">Monitoring call audio for AI voice cloning protection</string>
+</resources>

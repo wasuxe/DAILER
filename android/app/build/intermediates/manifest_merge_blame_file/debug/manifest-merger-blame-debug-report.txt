@@ -1,0 +1,574 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.dailer.app.debug"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+11-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:4:5-71
+11-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:4:22-68
+12    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+12-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:5:5-75
+12-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:5:22-72
+13    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+13-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:6:5-72
+13-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:6:22-69
+14    <uses-permission android:name="android.permission.READ_CONTACTS" />
+14-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:7:5-72
+14-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:7:22-69
+15    <uses-permission android:name="android.permission.CALL_PHONE" />
+15-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:8:5-69
+15-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:8:22-66
+16    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+16-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:9:5-75
+16-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:9:22-72
+17    <uses-permission android:name="android.permission.INTERNET" />
+17-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:10:5-67
+17-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:10:22-64
+18    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+18-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:11:5-77
+18-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:11:22-74
+19    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+19-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:12:5-77
+19-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:12:22-74
+20    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
+20-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:13:5-88
+20-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:13:22-85
+21    <uses-permission android:name="android.permission.CAMERA" />
+21-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:14:5-65
+21-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:14:22-62
+22    <uses-permission android:name="android.permission.VIBRATE" />
+22-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:15:5-66
+22-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:15:22-63
+23    <uses-permission android:name="android.permission.WAKE_LOCK" />
+23-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:16:5-68
+23-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:16:22-65
+24    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+24-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\HP\.gradle\caches\transforms-3\9425958eafe0058058b73ad4c0d84d5d\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:5-72
+24-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\HP\.gradle\caches\transforms-3\9425958eafe0058058b73ad4c0d84d5d\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:22-69
+25    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+25-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\HP\.gradle\caches\transforms-3\9425958eafe0058058b73ad4c0d84d5d\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:5-74
+25-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\HP\.gradle\caches\transforms-3\9425958eafe0058058b73ad4c0d84d5d\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:22-71
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:24:5-79
+26-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:24:22-76
+27    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+27-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:25:5-81
+27-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:25:22-78
+28
+29    <permission
+29-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+30        android:name="com.dailer.app.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+30-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+31        android:protectionLevel="signature" />
+31-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+32
+33    <uses-permission android:name="com.dailer.app.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+33-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+33-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+34    <uses-feature
+34-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:25:5-27:36
+35        android:name="android.hardware.camera"
+35-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:26:9-47
+36        android:required="false" />
+36-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:27:9-33
+37    <uses-feature
+37-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:28:5-30:36
+38        android:name="android.hardware.camera.front"
+38-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:29:9-53
+39        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+39-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:30:9-33
+40    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+41    <uses-feature
+41-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:33:5-35:36
+42        android:name="android.hardware.camera.autofocus"
+42-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:34:9-57
+43        android:required="false" />
+43-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:35:9-33
+44    <uses-feature
+44-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:36:5-38:36
+45        android:name="android.hardware.camera.flash"
+45-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:37:9-53
+46        android:required="false" />
+46-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:38:9-33
+47    <uses-feature
+47-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:39:5-41:36
+48        android:name="android.hardware.screen.landscape"
+48-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:40:9-57
+49        android:required="false" />
+49-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:41:9-33
+50    <uses-feature
+50-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:42:5-44:36
+51        android:name="android.hardware.wifi"
+51-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:43:9-45
+52        android:required="false" />
+52-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:44:9-33
+53
+54    <application
+54-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:18:5-95:19
+55        android:name="com.dailer.app.DailerApplication"
+55-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:19:9-42
+56        android:allowBackup="false"
+56-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:20:9-36
+57        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+57-->[androidx.core:core:1.12.0] C:\Users\HP\.gradle\caches\transforms-3\5d2250d8f4822d93dfa151260c7f7f2c\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+58        android:debuggable="true"
+59        android:extractNativeLibs="false"
+60        android:icon="@mipmap/ic_launcher"
+60-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:21:9-43
+61        android:label="@string/app_name"
+61-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:22:9-41
+62        android:networkSecurityConfig="@xml/network_security_config"
+62-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:25:9-69
+63        android:supportsRtl="true"
+63-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:23:9-35
+64        android:theme="@style/Theme.Dailer" >
+64-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:24:9-44
+65
+66        <!-- Main Activity -->
+67        <activity
+67-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:28:9-43:20
+68            android:name="com.dailer.app.ui.MainActivity"
+68-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:29:13-44
+69            android:exported="true"
+69-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:30:13-36
+70            android:theme="@style/Theme.Dailer" >
+70-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:31:13-48
+71            <intent-filter>
+71-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:32:13-35:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:33:17-69
+72-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:33:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:34:17-77
+74-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:34:27-74
+75            </intent-filter>
+76            <!-- Deep link for enrollment -->
+77            <intent-filter android:autoVerify="true" >
+77-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:37:13-42:29
+77-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:37:28-53
+78                <action android:name="android.intent.action.VIEW" />
+78-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:38:17-69
+78-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:38:25-66
+79
+80                <category android:name="android.intent.category.DEFAULT" />
+80-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:17-76
+80-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:27-73
+81                <category android:name="android.intent.category.BROWSABLE" />
+81-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:40:17-78
+81-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:40:27-75
+82
+83                <data
+83-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:41:17-71
+84                    android:host="enroll"
+84-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:41:47-68
+85                    android:scheme="dailer" />
+85-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:41:23-46
+86            </intent-filter>
+87        </activity>
+88
+89        <!-- Dialer Activity for ROLE_DIALER -->
+90        <activity
+90-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:46:9-58:20
+91            android:name="com.dailer.app.ui.dialer.DialerActivity"
+91-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:47:13-53
+92            android:exported="true" >
+92-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:48:13-36
+93            <intent-filter>
+93-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:49:13-53:29
+94                <action android:name="android.intent.action.DIAL" />
+94-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:50:17-69
+94-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:50:25-66
+95
+96                <data android:scheme="tel" />
+96-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:41:17-71
+96-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:41:23-46
+97
+98                <category android:name="android.intent.category.DEFAULT" />
+98-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:17-76
+98-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:27-73
+99            </intent-filter>
+100            <intent-filter>
+100-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:54:13-57:29
+101                <action android:name="android.intent.action.DIAL" />
+101-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:50:17-69
+101-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:50:25-66
+102
+103                <category android:name="android.intent.category.DEFAULT" />
+103-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:17-76
+103-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:39:27-73
+104            </intent-filter>
+105        </activity>
+106
+107        <!-- InCallService for call management -->
+108        <service
+108-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:61:9-74:19
+109            android:name="com.dailer.app.service.DailerInCallService"
+109-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:62:13-56
+110            android:exported="true"
+110-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:64:13-36
+111            android:permission="android.permission.BIND_INCALL_SERVICE" >
+111-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:63:13-72
+112            <meta-data
+112-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:65:13-67:40
+113                android:name="android.telecom.IN_CALL_SERVICE_UI"
+113-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:66:17-66
+114                android:value="true" />
+114-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:67:17-37
+115            <meta-data
+115-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:68:13-70:40
+116                android:name="android.telecom.IN_CALL_SERVICE_RINGING"
+116-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:69:17-71
+117                android:value="true" />
+117-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:70:17-37
+118
+119            <intent-filter>
+119-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:71:13-73:29
+120                <action android:name="android.telecom.InCallService" />
+120-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:72:17-72
+120-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:72:25-69
+121            </intent-filter>
+122        </service>
+123
+124        <!-- Call Screening Service -->
+125        <service
+125-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:77:9-84:19
+126            android:name="com.dailer.app.service.DailerCallScreeningService"
+126-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:78:13-63
+127            android:exported="true"
+127-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:80:13-36
+128            android:permission="android.permission.BIND_SCREENING_SERVICE" >
+128-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:79:13-75
+129            <intent-filter>
+129-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:81:13-83:29
+130                <action android:name="android.telecom.CallScreeningService" />
+130-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:82:17-79
+130-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:82:25-76
+131            </intent-filter>
+132        </service>
+133
+134        <!-- Recording Service (Foreground) -->
+135        <service
+135-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:87:9-90:40
+136            android:name="com.dailer.app.service.CallRecordingService"
+136-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:88:13-57
+137            android:exported="false"
+137-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:90:13-37
+138            android:foregroundServiceType="phoneCall" />
+138-->C:\Users\HP\OneDrive\Desktop\DAILER\android\app\src\main\AndroidManifest.xml:89:13-54
+139
+140        <!-- Upload Worker -->
+141        <!-- (WorkManager handles this) -->
+142
+143        <service
+143-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:24:9-33:19
+144            android:name="androidx.camera.core.impl.MetadataHolderService"
+144-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:25:13-75
+145            android:enabled="false"
+145-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:26:13-36
+146            android:exported="false" >
+146-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:27:13-37
+147            <meta-data
+147-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:30:13-32:89
+148                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+148-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:31:17-103
+149                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+149-->[androidx.camera:camera-camera2:1.3.1] C:\Users\HP\.gradle\caches\transforms-3\fe87abb5ded315b76df21678e1695ab7\transformed\camera-camera2-1.3.1\AndroidManifest.xml:32:17-86
+150        </service>
+151
+152        <provider
+152-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+153            android:name="androidx.startup.InitializationProvider"
+153-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+154            android:authorities="com.dailer.app.debug.androidx-startup"
+154-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+155            android:exported="false" >
+155-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+156            <meta-data
+156-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+157                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+157-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+158                android:value="androidx.startup" />
+158-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\99f252e7e2154d46b88c278ce1ef166a\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+159            <meta-data
+159-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:34:13-36:52
+160                android:name="androidx.work.WorkManagerInitializer"
+160-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:35:17-68
+161                android:value="androidx.startup" />
+161-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:36:17-49
+162            <meta-data
+162-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\HP\.gradle\caches\transforms-3\78328cc105b15c1fce0a62814b242e78\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+163                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+163-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\HP\.gradle\caches\transforms-3\78328cc105b15c1fce0a62814b242e78\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+164                android:value="androidx.startup" />
+164-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\HP\.gradle\caches\transforms-3\78328cc105b15c1fce0a62814b242e78\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+165            <meta-data
+165-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+166                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+166-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+167                android:value="androidx.startup" />
+167-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+168        </provider>
+169
+170        <service
+170-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:39:9-45:35
+171            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+171-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:40:13-88
+172            android:directBootAware="false"
+172-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:41:13-44
+173            android:enabled="@bool/enable_system_alarm_service_default"
+173-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:42:13-72
+174            android:exported="false" />
+174-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:43:13-37
+175        <service
+175-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:46:9-52:35
+176            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+176-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:47:13-84
+177            android:directBootAware="false"
+177-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:48:13-44
+178            android:enabled="@bool/enable_system_job_service_default"
+178-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:49:13-70
+179            android:exported="true"
+179-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:50:13-36
+180            android:permission="android.permission.BIND_JOB_SERVICE" />
+180-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:51:13-69
+181        <service
+181-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:53:9-59:35
+182            android:name="androidx.work.impl.foreground.SystemForegroundService"
+182-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:54:13-81
+183            android:directBootAware="false"
+183-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:55:13-44
+184            android:enabled="@bool/enable_system_foreground_service_default"
+184-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:56:13-77
+185            android:exported="false" />
+185-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:57:13-37
+186
+187        <receiver
+187-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:61:9-66:35
+188            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+188-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:62:13-88
+189            android:directBootAware="false"
+189-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:63:13-44
+190            android:enabled="true"
+190-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:64:13-35
+191            android:exported="false" />
+191-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:65:13-37
+192        <receiver
+192-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:67:9-77:20
+193            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+193-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:68:13-106
+194            android:directBootAware="false"
+194-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:69:13-44
+195            android:enabled="false"
+195-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:70:13-36
+196            android:exported="false" >
+196-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:71:13-37
+197            <intent-filter>
+197-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:73:13-76:29
+198                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+198-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:17-87
+198-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:74:25-84
+199                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+199-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:17-90
+199-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:75:25-87
+200            </intent-filter>
+201        </receiver>
+202        <receiver
+202-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:78:9-88:20
+203            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+203-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:79:13-104
+204            android:directBootAware="false"
+204-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:80:13-44
+205            android:enabled="false"
+205-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:81:13-36
+206            android:exported="false" >
+206-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:82:13-37
+207            <intent-filter>
+207-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:84:13-87:29
+208                <action android:name="android.intent.action.BATTERY_OKAY" />
+208-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:17-77
+208-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:85:25-74
+209                <action android:name="android.intent.action.BATTERY_LOW" />
+209-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:86:17-76
+209-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:86:25-73
+210            </intent-filter>
+211        </receiver>
+212        <receiver
+212-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:89:9-99:20
+213            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+213-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:90:13-104
+214            android:directBootAware="false"
+214-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:91:13-44
+215            android:enabled="false"
+215-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:92:13-36
+216            android:exported="false" >
+216-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:93:13-37
+217            <intent-filter>
+217-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:95:13-98:29
+218                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+218-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:17-83
+218-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:96:25-80
+219                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+219-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:17-82
+219-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:97:25-79
+220            </intent-filter>
+221        </receiver>
+222        <receiver
+222-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:100:9-109:20
+223            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+223-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:101:13-103
+224            android:directBootAware="false"
+224-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:102:13-44
+225            android:enabled="false"
+225-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:103:13-36
+226            android:exported="false" >
+226-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:104:13-37
+227            <intent-filter>
+227-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:106:13-108:29
+228                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+228-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:17-79
+228-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:107:25-76
+229            </intent-filter>
+230        </receiver>
+231        <receiver
+231-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:110:9-121:20
+232            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+232-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:111:13-88
+233            android:directBootAware="false"
+233-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:112:13-44
+234            android:enabled="false"
+234-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:113:13-36
+235            android:exported="false" >
+235-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:114:13-37
+236            <intent-filter>
+236-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:116:13-120:29
+237                <action android:name="android.intent.action.BOOT_COMPLETED" />
+237-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:17-79
+237-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:117:25-76
+238                <action android:name="android.intent.action.TIME_SET" />
+238-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:17-73
+238-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:118:25-70
+239                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+239-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:17-81
+239-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:119:25-78
+240            </intent-filter>
+241        </receiver>
+242        <receiver
+242-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:122:9-131:20
+243            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+243-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:123:13-99
+244            android:directBootAware="false"
+244-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:124:13-44
+245            android:enabled="@bool/enable_system_alarm_service_default"
+245-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:125:13-72
+246            android:exported="false" >
+246-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:126:13-37
+247            <intent-filter>
+247-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:128:13-130:29
+248                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+248-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:17-98
+248-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:129:25-95
+249            </intent-filter>
+250        </receiver>
+251        <receiver
+251-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:132:9-142:20
+252            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+252-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:133:13-78
+253            android:directBootAware="false"
+253-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:134:13-44
+254            android:enabled="true"
+254-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:135:13-35
+255            android:exported="true"
+255-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:136:13-36
+256            android:permission="android.permission.DUMP" >
+256-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:137:13-57
+257            <intent-filter>
+257-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:139:13-141:29
+258                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+258-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:17-88
+258-->[androidx.work:work-runtime:2.9.0] C:\Users\HP\.gradle\caches\transforms-3\4753c93cfc6fdc56237ab76ba634a19d\transformed\work-runtime-2.9.0\AndroidManifest.xml:140:25-85
+259            </intent-filter>
+260        </receiver>
+261
+262        <uses-library
+262-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+263            android:name="androidx.window.extensions"
+263-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+264            android:required="false" />
+264-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+265        <uses-library
+265-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+266            android:name="androidx.window.sidecar"
+266-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+267            android:required="false" />
+267-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\90f320fa42846767f81e9c1ebc3b2636\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+268
+269        <service
+269-->[androidx.room:room-runtime:2.6.1] C:\Users\HP\.gradle\caches\transforms-3\81a55f45001d9fe5b321dc61d7aa312f\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+270            android:name="androidx.room.MultiInstanceInvalidationService"
+270-->[androidx.room:room-runtime:2.6.1] C:\Users\HP\.gradle\caches\transforms-3\81a55f45001d9fe5b321dc61d7aa312f\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+271            android:directBootAware="true"
+271-->[androidx.room:room-runtime:2.6.1] C:\Users\HP\.gradle\caches\transforms-3\81a55f45001d9fe5b321dc61d7aa312f\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+272            android:exported="false" />
+272-->[androidx.room:room-runtime:2.6.1] C:\Users\HP\.gradle\caches\transforms-3\81a55f45001d9fe5b321dc61d7aa312f\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+273
+274        <receiver
+274-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+275            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+275-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+276            android:directBootAware="false"
+276-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+277            android:enabled="true"
+277-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+278            android:exported="true"
+278-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+279            android:permission="android.permission.DUMP" >
+279-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+280            <intent-filter>
+280-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+281                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+281-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+281-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+282            </intent-filter>
+283            <intent-filter>
+283-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+284                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+284-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+284-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+285            </intent-filter>
+286            <intent-filter>
+286-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+287                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+287-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+287-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+288            </intent-filter>
+289            <intent-filter>
+289-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+290                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+290-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+290-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\HP\.gradle\caches\transforms-3\30151f1424179a7e2d7ba3a07cf1816f\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+291            </intent-filter>
+292        </receiver>
+293
+294        <activity
+294-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:47:9-53:63
+295            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+295-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:48:13-74
+296            android:clearTaskOnLaunch="true"
+296-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:49:13-45
+297            android:screenOrientation="sensorLandscape"
+297-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:50:13-56
+298            android:stateNotNeeded="true"
+298-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:51:13-42
+299            android:theme="@style/zxing_CaptureTheme"
+299-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:52:13-54
+300            android:windowSoftInputMode="stateAlwaysHidden" />
+300-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\HP\.gradle\caches\transforms-3\9a7259df80d519f8d3f5365060d66bd2\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:53:13-60
+301    </application>
+302
+303</manifest>

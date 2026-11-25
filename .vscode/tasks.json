@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Dailer backend",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"cd /d \"C:\\Users\\HP\\OneDrive\\Desktop\\DAILER\\backend\" && \".venv\\Scripts\\python.exe\" run.py"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Test Dailer backend",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"cd /d \"C:\\Users\\HP\\OneDrive\\Desktop\\DAILER\\backend\" && \".venv\\Scripts\\python.exe\" -m pytest tests\\test_api.py -q"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Dailer Android app",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"cd /d \"C:\\Users\\HP\\OneDrive\\Desktop\\DAILER\\android\" && gradle assembleDebug"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

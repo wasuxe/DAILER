@@ -1,0 +1,56 @@
+[
+  {
+    "name": "nav_graph",
+    "navigationXmlIds": [],
+    "deepLinks": [
+      {
+        "schemes": [
+          "dailer"
+        ],
+        "host": "enroll",
+        "port": -1,
+        "path": "/",
+        "query": "token\u003d.*\u0026name\u003d.*",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 60,
+            "mStartColumn": 8,
+            "mStartOffset": 2219,
+            "mEndLine": 60,
+            "mEndColumn": 90,
+            "mEndOffset": 2301
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      },
+      {
+        "schemes": [
+          "dailer"
+        ],
+        "host": "enroll",
+        "port": -1,
+        "path": "/",
+        "query": "token\u003d.*",
+        "sourceFilePosition": {
+          "mSourceFile": {
+            "mDescription": "nav_graph.xml"
+          },
+          "mSourcePosition": {
+            "mStartLine": 61,
+            "mStartColumn": 8,
+            "mStartOffset": 2310,
+            "mEndLine": 61,
+            "mEndColumn": 66,
+            "mEndOffset": 2368
+          }
+        },
+        "isAutoVerify": false,
+        "action": "android.intent.action.VIEW"
+      }
+    ]
+  }
+]

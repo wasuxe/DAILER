@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/setupFragment">
+
+    <fragment
+        android:id="@+id/setupFragment"
+        android:name="com.dailer.app.ui.setup.SetupFragment"
+        android:label="@string/setup_title"
+        tools:layout="@layout/fragment_setup">
+        <action
+            android:id="@+id/action_setup_to_relatives"
+            app:destination="@id/relativesFragment"
+            app:popUpTo="@id/setupFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/relativesFragment"
+        android:name="com.dailer.app.ui.relatives.RelativesFragment"
+        android:label="@string/relatives_title"
+        tools:layout="@layout/fragment_relatives">
+        <action
+            android:id="@+id/action_relatives_to_enroll"
+            app:destination="@id/enrollFragment" />
+        <action
+            android:id="@+id/action_relatives_to_qr"
+            app:destination="@id/qrGeneratorFragment" />
+        <action
+            android:id="@+id/action_relatives_to_inCall"
+            app:destination="@id/inCallFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/enrollFragment"
+        android:name="com.dailer.app.ui.enrollment.EnrollFragment"
+        android:label="@string/enroll_title"
+        tools:layout="@layout/fragment_enroll">
+        <argument
+            android:name="inviteToken"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="relativeName"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="phoneNumber"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="relationship"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink app:uri="dailer://enroll?token={inviteToken}&amp;name={relativeName}" />
+        <deepLink app:uri="dailer://enroll?token={inviteToken}" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/qrGeneratorFragment"
+        android:name="com.dailer.app.ui.enrollment.QrGeneratorFragment"
+        android:label="@string/qr_title"
+        tools:layout="@layout/fragment_qr_generator">
+        <action
+            android:id="@+id/action_qr_to_relatives"
+            app:destination="@id/relativesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inCallFragment"
+        android:name="com.dailer.app.ui.dialer.InCallFragment"
+        android:label="@string/dialer_title"
+        tools:layout="@layout/fragment_in_call" />
+
+</navigation>

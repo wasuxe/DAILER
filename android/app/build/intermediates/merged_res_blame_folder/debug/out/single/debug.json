@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_share.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_share.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_phone.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_fragment_qr_generator.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/fragment_qr_generator.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_verified.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_verified.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_bg_avatar_circle.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/bg_avatar_circle.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_settings.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_settings.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_fragment_setup.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/fragment_setup.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_item_relative.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/item_relative.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_backspace.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_backspace.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.dailer.app-main-67:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_check_circle.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_check_circle.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.dailer.app-main-67:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/xml_network_security_config.xml.flat",
+        "source": "com.dailer.app-main-67:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_mic.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_mic.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_warning.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_warning.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_fragment_enroll.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/fragment_enroll.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_speaker.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_speaker.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/navigation_nav_graph.xml.flat",
+        "source": "com.dailer.app-main-67:/navigation/nav_graph.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_add.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_delete.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_fragment_in_call.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/fragment_in_call.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_family.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_family.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_fragment_relatives.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/fragment_relatives.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_pending.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_pending.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_view_verification_banner.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/view_verification_banner.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_qr_code.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_qr_code.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_mute.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_mute.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_hangup.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_hangup.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_activity_main.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/layout_activity_dialer.xml.flat",
+        "source": "com.dailer.app-main-67:/layout/activity_dialer.xml"
+    },
+    {
+        "merged": "com.dailer.app-merged_res-65:/drawable_ic_stop.xml.flat",
+        "source": "com.dailer.app-main-67:/drawable/ic_stop.xml"
+    }
+]

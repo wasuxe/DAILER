@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_green_dark">#388E3C</color>
+    <color name="primary_green_light">#E8F5E9</color>
+
+    <color name="warning_red">#F44336</color>
+    <color name="warning_red_dark">#D32F2F</color>
+    <color name="warning_red_light">#FFEBEE</color>
+
+    <color name="amber">#FFC107</color>
+    <color name="amber_dark">#FFA000</color>
+    <color name="amber_light">#FFF8E1</color>
+
+    <color name="pending_gray">#757575</color>
+    <color name="pending_gray_light">#F5F5F5</color>
+    <color name="pending_gray_border">#BDBDBD</color>
+
+    <color name="background_light">#FAFAFA</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#616161</color>
+    <color name="text_on_color">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
+</resources>

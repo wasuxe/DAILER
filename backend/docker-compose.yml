@@ -1,0 +1,27 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dailer-api
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5000
+      - STORAGE_TYPE=local
+      - STORAGE_PATH=/app/data/storage
+    volumes:
+      - dailer_storage:/app/data/storage
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/api/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  dailer_storage:

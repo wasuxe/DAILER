@@ -88,4 +88,4 @@ The API listens on `http://0.0.0.0:5000` by default (the Android emulator reache
 - **Android 10+ Call Recording Constraint:** Stock Android restricts third-party call recording. Holding `ROLE_DIALER` (`InCallService` + `CallScreeningService`) is the standard workaround; `AudioRecorder` attempts `MediaRecorder.AudioSource.VOICE_CALL` and falls back to `MIC` if blocked by device/OEM policy.
 - **Call-Recording Consent & Telecom Regulations:** Laws vary by jurisdiction (e.g., India generally permits one-party consent, though telecom regulations may still require an in-call disclosure or beep). Verify local compliance before production rollout.
 - **Biometric Data & Retention:** Voice embeddings are encrypted at rest with Fernet (`cryptography`), relatives can revoke their enrollment via `DELETE /api/enrollment/<id>`, and temporary call audio clips are automatically purged after the configured retention window (`CALL_AUDIO_RETENTION_HOURS`).
-
+#ready to smash

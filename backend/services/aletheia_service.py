@@ -95,6 +95,10 @@ class AletheiaService:
 
         try:
             with urllib_request.urlopen(req, timeout=self.timeout_s) as resp:
+                resp_headers = {
+                    k: v for k, v in resp.headers.items()
+                    if k.lower().startswith(("x-", "ratelimit", "detectif"))
+                }
                 body = resp.read().decode("utf-8")
                 data: dict[str, Any] = json.loads(body)
         except urllib_error.HTTPError as exc:
@@ -107,12 +111,24 @@ class AletheiaService:
 
         # Detectif.ai returns {"result": {"verdict": "real"|"fake", "score": <synthetic_risk>}}
         result_obj = data.get("result") if isinstance(data.get("result"), dict) else data
+        api_reason = (
+            result_obj.get("reason")
+            or result_obj.get("explanation")
+            or result_obj.get("detail")
+            or data.get("reason")
+            or data.get("message")
+            or resp_headers.get("X-Reason")
+            or resp_headers.get("x-reason")
+        )
         if "verdict" in result_obj:
             verdict_str = str(result_obj.get("verdict", "")).strip().lower()
             synthetic_score = float(result_obj.get("score", 0.0))
             synthetic_score = max(0.0, min(1.0, synthetic_score))
             is_human = verdict_str == "real"
             human_confidence = round(1.0 - synthetic_score, 4)
+            reason_text = str(api_reason).strip() if api_reason else (
+                f"Aletheia verdict='{verdict_str}', synthetic_risk={synthetic_score:.2f}"
+            )
             return AletheiaResult(
                 is_human=is_human,
                 confidence=human_confidence,
@@ -120,6 +136,8 @@ class AletheiaService:
                     "human": human_confidence,
                     "synthetic": round(synthetic_score, 4),
                 },
+                reason=reason_text,
+                api_metadata=resp_headers,
             )
 
         raw_scores_raw = data.get("raw_scores", {})

@@ -5,10 +5,16 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
+import androidx.datastore.preferences.core.stringPreferencesKey
 import com.dailer.app.data.local.DailerDatabase
 import com.dailer.app.data.remote.RetrofitClient
 import com.dailer.app.data.repository.DailerRepository
 import com.dailer.app.util.Constants
+import com.dailer.app.util.setupDataStore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class DailerApplication : Application() {
 
@@ -17,8 +23,7 @@ class DailerApplication : Application() {
     val repository: DailerRepository by lazy {
         DailerRepository(
             relativeDao = database.relativeDao(),
-            callRecordDao = database.callRecordDao(),
-            apiService = RetrofitClient.apiService
+            callRecordDao = database.callRecordDao()
         )
     }
 
@@ -27,6 +32,21 @@ class DailerApplication : Application() {
         // Initialize Room database singleton and notification channels on app startup
         database
         createNotificationChannels()
+        loadSavedServerUrl()
+    }
+
+    private fun loadSavedServerUrl() {
+        CoroutineScope(Dispatchers.IO).launch {
+            runCatching {
+                val prefs = setupDataStore.data.first()
+                val savedUrl = prefs[stringPreferencesKey("server_url")]?.trim()
+                if (!savedUrl.isNullOrBlank() &&
+                    (savedUrl.startsWith("http://") || savedUrl.startsWith("https://"))
+                ) {
+                    RetrofitClient.setBaseUrl(savedUrl)
+                }
+            }
+        }
     }
 
     private fun createNotificationChannels() {

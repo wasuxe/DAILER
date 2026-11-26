@@ -4,9 +4,14 @@
 
     <!-- Bottom Navigation -->
     <string name="nav_relatives">Family</string>
+    <string name="nav_history">History</string>
     <string name="nav_enroll">Enroll</string>
     <string name="nav_qr">Invite QR</string>
     <string name="nav_setup">Setup</string>
+
+    <!-- Call History Screen -->
+    <string name="history_title">Call Recording History</string>
+    <string name="history_empty">No recorded calls yet. Calls will appear here automatically with AI clone detection results.</string>
 
     <!-- Setup Screen -->
     <string name="setup_title">Protect Your Calls</string>
@@ -79,6 +84,7 @@
     <string name="call_state_ringing">Incoming Call…</string>
     <string name="call_state_dialing">Calling…</string>
     <string name="call_state_active">Call in Progress</string>
+    <string name="call_state_active_recording">Call Active • Recording (0–120s) for Voice Check</string>
     <string name="call_state_ended">Call Ended</string>
     <string name="unknown_caller">Unknown Caller</string>
 

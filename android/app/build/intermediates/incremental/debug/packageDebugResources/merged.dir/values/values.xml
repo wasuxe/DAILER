@@ -12,6 +12,7 @@
     <color name="primary_green">#4CAF50</color>
     <color name="primary_green_dark">#388E3C</color>
     <color name="primary_green_light">#E8F5E9</color>
+    <color name="surface_card">#FFFFFF</color>
     <color name="surface_dark">#1E1E1E</color>
     <color name="surface_light">#FFFFFF</color>
     <color name="text_on_color">#FFFFFF</color>
@@ -57,6 +58,7 @@
     <string name="btn_submit_enrollment">Enroll Voiceprint</string>
     <string name="btn_unmute">Unmute</string>
     <string name="call_state_active">Call in Progress</string>
+    <string name="call_state_active_recording">Call Active • Recording (0–120s) for Voice Check</string>
     <string name="call_state_dialing">Calling…</string>
     <string name="call_state_ended">Call Ended</string>
     <string name="call_state_ringing">Incoming Call…</string>
@@ -69,7 +71,10 @@
     <string name="enroll_prompt">\"Hi Mom and Dad, this is my real voice calling to check in on you today.\"</string>
     <string name="enroll_relationship_hint">Relationship (e.g., Daughter, Son, Grandchild)</string>
     <string name="enroll_title">Enroll Trusted Relative</string>
+    <string name="history_empty">No recorded calls yet. Calls will appear here automatically with AI clone detection results.</string>
+    <string name="history_title">Call Recording History</string>
     <string name="nav_enroll">Enroll</string>
+    <string name="nav_history">History</string>
     <string name="nav_qr">Invite QR</string>
     <string name="nav_relatives">Family</string>
     <string name="nav_setup">Setup</string>

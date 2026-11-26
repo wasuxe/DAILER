@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_family"
         android:title="@string/nav_relatives" />
     <item
+        android:id="@+id/callHistoryFragment"
+        android:icon="@drawable/ic_phone"
+        android:title="@string/nav_history" />
+    <item
         android:id="@+id/enrollFragment"
         android:icon="@drawable/ic_mic"
         android:title="@string/nav_enroll" />

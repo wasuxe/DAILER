@@ -74,6 +74,13 @@ class RelativesFragment : Fragment() {
             binding.layoutEmptyState.visibility = if (isEmpty) View.VISIBLE else View.GONE
             binding.rvRelatives.visibility = if (isEmpty) View.GONE else View.VISIBLE
         }
+
+        viewModel.refreshFromServer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshFromServer()
     }
 
     private fun deleteRelativeWithFeedback(relative: com.dailer.app.data.local.entity.RelativeEntity) {

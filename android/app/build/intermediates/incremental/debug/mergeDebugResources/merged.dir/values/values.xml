@@ -1021,6 +1021,7 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="surface_card">#FFFFFF</color>
     <color name="surface_dark">#1E1E1E</color>
     <color name="surface_light">#FFFFFF</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
@@ -2124,6 +2125,7 @@
     <string name="call_notification_ongoing_text">Ongoing call</string>
     <string name="call_notification_screening_text">Screening an incoming call</string>
     <string name="call_state_active">Call in Progress</string>
+    <string name="call_state_active_recording">Call Active • Recording (0–120s) for Voice Check</string>
     <string name="call_state_dialing">Calling…</string>
     <string name="call_state_ended">Call Ended</string>
     <string name="call_state_ringing">Incoming Call…</string>
@@ -2167,6 +2169,8 @@
     <string name="generic_error_no_keyguard">This device does not support PIN, pattern, or password.</string>
     <string name="generic_error_user_canceled">Authentication canceled by user.</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="history_empty">No recorded calls yet. Calls will appear here automatically with AI clone detection results.</string>
+    <string name="history_title">Call Recording History</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
     <string name="library_zxingandroidembedded_author" translatable="false">JourneyApps</string>
@@ -2287,6 +2291,7 @@
     <string name="nav_app_bar_navigate_up_description">Navigate up</string>
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="nav_enroll">Enroll</string>
+    <string name="nav_history">History</string>
     <string name="nav_qr">Invite QR</string>
     <string name="nav_relatives">Family</string>
     <string name="nav_setup">Setup</string>

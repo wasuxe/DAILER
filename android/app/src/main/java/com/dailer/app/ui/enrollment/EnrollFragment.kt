@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dailer.app.R
+import com.dailer.app.data.remote.RetrofitClient
 import com.dailer.app.databinding.FragmentEnrollBinding
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
@@ -33,18 +34,41 @@ class EnrollFragment : Fragment() {
         if (granted) {
             viewModel.startRecording()
         } else {
+            val msg = "Microphone permission denied. Please allow microphone access to record your voice."
+            binding.tvRecordingStatus.text = msg
             Toast.makeText(
                 requireContext(),
-                R.string.status_permissions_pending,
-                Toast.LENGTH_SHORT
+                msg,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private val cameraPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            launchQrScanner()
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Camera permission is required to scan the enrollment QR code.",
+                Toast.LENGTH_LONG
             ).show()
         }
     }
 
     private val qrScanLauncher = registerForActivityResult(ScanContract()) { result ->
-        val contents = result.contents ?: return@registerForActivityResult
-        applyDeepLinkContents(contents)
-        Toast.makeText(requireContext(), "Invite details loaded", Toast.LENGTH_SHORT).show()
+        val contents = result.contents
+        if (contents.isNullOrBlank()) {
+            Toast.makeText(requireContext(), "QR scan cancelled", Toast.LENGTH_SHORT).show()
+            return@registerForActivityResult
+        }
+        if (applyDeepLinkContents(contents)) {
+            Toast.makeText(requireContext(), "Invite details loaded from QR", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Invalid Dailer enrollment QR code", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateView(
@@ -83,15 +107,28 @@ class EnrollFragment : Fragment() {
         }
 
         binding.btnScanQr.setOnClickListener {
-            val options = ScanOptions().apply {
-                setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-                setPrompt(getString(R.string.qr_instructions))
-                setBeepEnabled(false)
+            val hasCamera = ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+            if (hasCamera) {
+                launchQrScanner()
+            } else {
+                cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
             }
-            qrScanLauncher.launch(options)
         }
 
         observeState()
+    }
+
+    private fun launchQrScanner() {
+        val options = ScanOptions().apply {
+            setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            setPrompt(getString(R.string.qr_instructions))
+            setBeepEnabled(false)
+            setOrientationLocked(false)
+        }
+        qrScanLauncher.launch(options)
     }
 
     private fun populateFromArguments() {
@@ -106,13 +143,18 @@ class EnrollFragment : Fragment() {
         args.getString("relationship")?.takeIf { it.isNotBlank() }?.let {
             binding.etRelationship.setText(it)
         }
+        args.getString("serverUrl")?.takeIf {
+            it.startsWith("http://") || it.startsWith("https://")
+        }?.let {
+            RetrofitClient.setBaseUrl(it)
+        }
     }
 
-    private fun applyDeepLinkContents(rawContents: String) {
-        val parsed = Uri.parse(rawContents)
-        if (parsed.scheme == "dailer") {
+    private fun applyDeepLinkContents(rawContents: String): Boolean {
+        val parsed = Uri.parse(rawContents.trim())
+        if (parsed.scheme == "dailer" && parsed.host == "enroll") {
             inviteToken = parsed.getQueryParameter("token")?.takeIf { it.isNotBlank() }
-                ?: rawContents.substringAfter("token=", rawContents)
+                ?: rawContents.substringAfter("token=", "").substringBefore("&").takeIf { it.isNotBlank() }
             parsed.getQueryParameter("name")?.takeIf { it.isNotBlank() }?.let {
                 binding.etName.setText(it)
             }
@@ -122,9 +164,14 @@ class EnrollFragment : Fragment() {
             parsed.getQueryParameter("relationship")?.takeIf { it.isNotBlank() }?.let {
                 binding.etRelationship.setText(it)
             }
-        } else {
-            inviteToken = rawContents.substringAfter("token=", rawContents)
+            parsed.getQueryParameter("server")?.takeIf {
+                it.startsWith("http://") || it.startsWith("https://")
+            }?.let {
+                RetrofitClient.setBaseUrl(it)
+            }
+            return true
         }
+        return false
     }
 
     private fun startRecordingWithPermissionCheck() {
@@ -184,9 +231,11 @@ class EnrollFragment : Fragment() {
                 viewModel.clearEnrollStatus()
                 findNavController().popBackStack()
             }.onFailure { error ->
+                val msg = error.message ?: "Enrollment upload failed"
+                binding.tvRecordingStatus.text = msg
                 Toast.makeText(
                     requireContext(),
-                    error.message ?: "Enrollment failed",
+                    msg,
                     Toast.LENGTH_LONG
                 ).show()
                 viewModel.clearEnrollStatus()

@@ -8,6 +8,14 @@
         "source": "com.dailer.app-main-67:/layout/fragment_qr_generator.xml"
     },
     {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/item_call_history.xml",
+        "source": "com.dailer.app-main-67:/layout/item_call_history.xml"
+    },
+    {
+        "merged": "com.dailer.app-mergeDebugResources-64:/layout/fragment_call_history.xml",
+        "source": "com.dailer.app-main-67:/layout/fragment_call_history.xml"
+    },
+    {
         "merged": "com.dailer.app-mergeDebugResources-64:/layout/item_relative.xml",
         "source": "com.dailer.app-main-67:/layout/item_relative.xml"
     },

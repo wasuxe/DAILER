@@ -13,5 +13,7 @@ data class EnrollRequest(
     @SerializedName("audio_base64")
     val audioBase64: String,
     @SerializedName("relationship")
-    val relationship: String
+    val relationship: String,
+    @SerializedName("invite_token")
+    val inviteToken: String? = null
 )

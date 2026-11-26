@@ -49,6 +49,7 @@ def verify_call():
     eidos = services["eidos"]
     storage = services["storage"]
     verdict_service = services["verdict"]
+    isolation = services.get("isolation")
 
     call_id = str(uuid.uuid4())
     try:
@@ -56,12 +57,17 @@ def verify_call():
     except Exception as exc:
         logger.warning("Failed to persist temp audio for call_id=%s: %s", call_id, exc)
 
+    analysis_audio = audio_bytes
+    if isolation is not None:
+        analysis_audio, isolation_meta = isolation.isolate_caller_audio(audio_bytes, eidos=eidos)
+        logger.info("Speaker isolation for call_id=%s: %s", call_id, isolation_meta)
+
     try:
         with ThreadPoolExecutor(max_workers=2) as executor:
-            aletheia_future = executor.submit(aletheia.analyze, audio_bytes)
+            aletheia_future = executor.submit(aletheia.analyze, analysis_audio)
             eidos_future = executor.submit(
                 eidos.verify_speaker,
-                audio_bytes,
+                analysis_audio,
                 req.claimed_relative_id,
                 req.phone_number,
             )

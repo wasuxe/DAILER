@@ -123,6 +123,7 @@ class CallRecordingService : Service(), AudioRecorder.Listener {
             val started = audioRecorder.start(outputFile, bufferDurationMs)
             if (!started) {
                 Log.e(TAG, "Failed to start recording for callId=$callId")
+                saveFallbackCallRecord("Recording could not start (microphone busy or permission denied)")
                 releaseWakeLock()
                 stopForegroundCompat()
                 stopSelf()
@@ -156,10 +157,44 @@ class CallRecordingService : Service(), AudioRecorder.Listener {
     }
 
     private fun finalizeActiveRecording() {
+        val wasRecording = audioRecorder.isRecording()
         val file = audioRecorder.stop()
         releaseWakeLock()
         if (file != null && file.exists() && file.length() > 0L) {
             persistAndEnqueue(file)
+        } else if (wasRecording && activeCallId != null) {
+            Log.w(TAG, "Recording file empty or too short for callId=$activeCallId; saving call history entry")
+            saveFallbackCallRecord("Call too short to analyze")
+        }
+    }
+
+    private fun saveFallbackCallRecord(reason: String) {
+        val callId = activeCallId ?: return
+        activeCallId = null
+        val phoneNumber = activePhoneNumber
+        val direction = activeCallDirection
+        val relativeId = activeRelativeId
+
+        persistenceScope.launch {
+            val repository = (application as DailerApplication).repository
+            val resolvedRelativeId = relativeId ?: if (phoneNumber.isNotBlank()) {
+                repository.findRelativeByPhone(AudioUtils.normalizePhoneNumber(phoneNumber))?.enrollmentId
+            } else {
+                null
+            }
+            val record = CallRecordEntity(
+                callId = callId,
+                phoneNumber = phoneNumber,
+                relativeId = resolvedRelativeId,
+                verdict = Constants.VERDICT_UNKNOWN,
+                reason = reason,
+                timestamp = System.currentTimeMillis(),
+                audioPath = null,
+                callDirection = direction,
+                durationMs = 0L,
+                isUploaded = true
+            )
+            repository.insertCallRecord(record)
         }
     }
 
@@ -168,6 +203,7 @@ class CallRecordingService : Service(), AudioRecorder.Listener {
         val phoneNumber = activePhoneNumber
         val direction = activeCallDirection
         val relativeId = activeRelativeId
+        Log.i(TAG, "Recording saved: ${file.name}, ${file.length()} bytes; enqueuing upload for callId=$callId")
 
         persistenceScope.launch {
             val repository = (application as DailerApplication).repository
@@ -196,7 +232,14 @@ class CallRecordingService : Service(), AudioRecorder.Listener {
 
     private fun startForegroundNotification() {
         val notification = buildNotification()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            startForeground(
+                Constants.RECORDING_NOTIFICATION_ID,
+                notification,
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL or
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
+            )
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(
                 Constants.RECORDING_NOTIFICATION_ID,
                 notification,

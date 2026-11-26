@@ -77,7 +77,14 @@ class EidosService:
         req = urllib_request.Request(url, data=payload, headers=headers, method="POST")
         try:
             with urllib_request.urlopen(req, timeout=self.timeout_s) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                resp_headers = {
+                    k: v for k, v in resp.headers.items()
+                    if k.lower().startswith(("x-", "ratelimit", "detectif"))
+                }
+                parsed = json.loads(resp.read().decode("utf-8"))
+                if isinstance(parsed, dict) and resp_headers:
+                    parsed["_response_headers"] = resp_headers
+                return parsed
         except urllib_error.HTTPError as exc:
             err_body = exc.read().decode("utf-8", errors="replace")
             logger.error("Eidos API HTTP %s (%s): %s", exc.code, url, err_body)
@@ -217,8 +224,12 @@ class EidosService:
                 is_match=is_match,
             )
 
-        # No explicit enrollment_id: match against active enrollments (prefer matching phone_number)
-        enrollments = self.storage.list_enrollments(active_only=True)
+        # No explicit enrollment_id: match against active non-parent enrollments
+        enrollments = [
+            r for r in self.storage.list_enrollments(active_only=True)
+            if (r.relationship or "").strip().lower()
+            not in {"self", "self (parent)", "parent", "owner", "me"}
+        ]
         if phone_number:
             phone_matches = [r for r in enrollments if r.phone_number == phone_number]
             if phone_matches:
@@ -265,7 +276,11 @@ class EidosService:
             if rec is not None:
                 candidates = [rec]
         else:
-            enrollments = self.storage.list_enrollments(active_only=True)
+            enrollments = [
+                r for r in self.storage.list_enrollments(active_only=True)
+                if (r.relationship or "").strip().lower()
+                not in {"self", "self (parent)", "parent", "owner", "me"}
+            ]
             if phone_number:
                 phone_matches = [r for r in enrollments if r.phone_number == phone_number]
                 candidates = phone_matches or enrollments
@@ -278,12 +293,15 @@ class EidosService:
                 matched_name=None,
                 threshold=self.match_threshold,
                 is_match=False,
+                reason="No enrolled family voiceprint found for this caller.",
             )
 
         url = self._remote_endpoint("verify")
         best_score = 0.0
         best_name: Optional[str] = None
         best_match = False
+        best_reason: Optional[str] = None
+        best_headers: dict[str, str] = {}
 
         for record in candidates:
             data = self._post_multipart(
@@ -292,20 +310,36 @@ class EidosService:
                 audio_bytes=audio_bytes,
                 filename="verify.wav",
             )
+            resp_headers = data.pop("_response_headers", {}) if isinstance(data, dict) else {}
             result_obj = data.get("result") if isinstance(data.get("result"), dict) else data
             similarity = float(result_obj.get("similarity", 0.0))
             score = round(max(0.0, min(1.0, similarity)), 4)
             decision = str(result_obj.get("decision", "")).strip().lower()
             matched = decision == "match" if decision else score >= self.match_threshold
+            api_reason = (
+                result_obj.get("reason")
+                or result_obj.get("explanation")
+                or data.get("reason")
+                or data.get("message")
+                or resp_headers.get("X-Reason")
+                or resp_headers.get("x-reason")
+            )
 
             if score >= best_score:
                 best_score = score
                 best_name = record.name
                 best_match = matched
+                best_headers = resp_headers
+                best_reason = str(api_reason).strip() if api_reason else (
+                    f"Eidos decision='{decision or ('match' if matched else 'no_match')}', "
+                    f"similarity={score:.2f} (threshold {self.match_threshold:.2f}) vs {record.name}"
+                )
 
         return EidosResult(
             match_score=best_score,
             matched_name=best_name if best_match else None,
             threshold=self.match_threshold,
             is_match=best_match,
+            reason=best_reason,
+            api_metadata=best_headers,
         )

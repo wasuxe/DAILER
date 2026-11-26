@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.dailer.app.R
+import com.dailer.app.data.remote.RetrofitClient
 import com.dailer.app.databinding.FragmentQrGeneratorBinding
 import com.dailer.app.util.AudioUtils
 import com.google.zxing.BarcodeFormat
@@ -71,16 +72,21 @@ class QrGeneratorFragment : Fragment() {
 
         val normalizedPhone = AudioUtils.normalizePhoneNumber(rawPhone)
         val token = UUID.randomUUID().toString()
+        val configuredServer = RetrofitClient.getBaseUrl()
 
-        val deepLink = Uri.Builder()
+        val uriBuilder = Uri.Builder()
             .scheme("dailer")
             .authority("enroll")
             .appendQueryParameter("token", token)
             .appendQueryParameter("name", name)
             .appendQueryParameter("phone", normalizedPhone)
             .appendQueryParameter("relationship", relationship)
-            .build()
-            .toString()
+
+        if (!configuredServer.contains("10.0.2.2")) {
+            uriBuilder.appendQueryParameter("server", configuredServer)
+        }
+
+        val deepLink = uriBuilder.build().toString()
 
         runCatching {
             BarcodeEncoder().encodeBitmap(

@@ -12,6 +12,7 @@ color pending_gray_light
 color primary_green
 color primary_green_dark
 color primary_green_light
+color surface_card
 color surface_dark
 color surface_light
 color text_on_color
@@ -77,6 +78,8 @@ id btnShareQr
 id btnSpeaker
 id btnStar
 id btnSubmitEnrollment
+id callHistoryFragment
+id cardCallHistory
 id cardComplete
 id cardDefaultDialer
 id cardPermissions
@@ -98,6 +101,7 @@ id gridNumpad
 id inCallContainer
 id inCallFragment
 id ivBannerIcon
+id ivCallStatusIcon
 id ivCompleteCheck
 id ivDialerCheck
 id ivPermissionsCheck
@@ -115,6 +119,7 @@ id nav_host_fragment
 id progressEnroll
 id qrGeneratorFragment
 id relativesFragment
+id rvCallHistory
 id rvRelatives
 id setupFragment
 id tilName
@@ -129,14 +134,20 @@ id toolbar
 id tvAvatarInitial
 id tvBannerSubtitle
 id tvBannerTitle
+id tvCallCaller
+id tvCallDetails
+id tvCallMeta
 id tvCallStatus
 id tvCallTimer
+id tvCallVerdictBadge
 id tvCallerName
 id tvCallerNumber
 id tvDialerRoleStatus
 id tvDialerTitle
+id tvEmptyHistory
 id tvEmptyRelatives
 id tvEnrollTitle
+id tvHistoryTitle
 id tvInviteToken
 id tvPermissionsStatus
 id tvPrompt
@@ -156,11 +167,13 @@ id tvVerifiedBadge
 id verificationBanner
 layout activity_dialer
 layout activity_main
+layout fragment_call_history
 layout fragment_enroll
 layout fragment_in_call
 layout fragment_qr_generator
 layout fragment_relatives
 layout fragment_setup
+layout item_call_history
 layout item_relative
 layout view_verification_banner
 menu bottom_nav_menu
@@ -203,6 +216,7 @@ string btn_stop_recording
 string btn_submit_enrollment
 string btn_unmute
 string call_state_active
+string call_state_active_recording
 string call_state_dialing
 string call_state_ended
 string call_state_ringing
@@ -215,7 +229,10 @@ string enroll_phone_hint
 string enroll_prompt
 string enroll_relationship_hint
 string enroll_title
+string history_empty
+string history_title
 string nav_enroll
+string nav_history
 string nav_qr
 string nav_relatives
 string nav_setup

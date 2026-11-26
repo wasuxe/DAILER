@@ -50,7 +50,11 @@ class DailerInCallService : InCallService() {
                     Log.i(TAG, "Call ringing from ${previous.phoneNumber}")
                 }
                 Call.STATE_ACTIVE -> {
-                    Log.i(TAG, "Call active with ${previous.phoneNumber}")
+                    Log.i(TAG, "Call active with ${previous.phoneNumber}; starting automatic recording")
+                    val number = extractPhoneNumber(call).ifBlank { previous.phoneNumber }
+                    startRecordingService(number, isIncomingCall(call))
+                    // Auto-enable speaker for better caller voice capture (mic can't access VOICE_CALL on Android 10+)
+                    enableSpeakerForDetection()
                 }
                 Call.STATE_DISCONNECTED -> {
                     Log.i(TAG, "Call disconnected")
@@ -111,7 +115,9 @@ class DailerInCallService : InCallService() {
             )
         )
 
-        startRecordingService(phoneNumber, isIncoming)
+        if (call.state == Call.STATE_ACTIVE) {
+            startRecordingService(phoneNumber, isIncoming)
+        }
     }
 
     override fun onCallRemoved(call: Call) {
@@ -178,6 +184,23 @@ class DailerInCallService : InCallService() {
             action = CallRecordingService.ACTION_STOP
         }
         startService(intent)
+    }
+
+    /**
+     * Auto-enable speaker so the microphone captures the remote caller's voice.
+     * On Android 10+, MIC audio source can't tap VOICE_CALL directly,
+     * so speaker output lets the mic pick up the caller clearly for detection.
+     */
+    private fun enableSpeakerForDetection() {
+        try {
+            if (!isSpeakerOn) {
+                setAudioRoute(CallAudioState.ROUTE_SPEAKER)
+                isSpeakerOn = true
+                Log.i(TAG, "Speaker auto-enabled for voice detection accuracy")
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Could not auto-enable speaker: ${e.message}")
+        }
     }
 
     private fun extractPhoneNumber(call: Call): String {

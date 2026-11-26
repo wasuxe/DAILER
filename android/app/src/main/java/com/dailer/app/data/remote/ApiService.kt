@@ -2,6 +2,7 @@ package com.dailer.app.data.remote
 
 import com.dailer.app.data.remote.dto.EnrollRequest
 import com.dailer.app.data.remote.dto.EnrollResponse
+import com.dailer.app.data.remote.dto.EnrollmentsResponse
 import com.dailer.app.data.remote.dto.VerifyRequest
 import com.dailer.app.data.remote.dto.VerifyResponse
 import retrofit2.Response
@@ -21,6 +22,9 @@ interface ApiService {
 
     @POST("api/verify")
     suspend fun verify(@Body request: VerifyRequest): Response<VerifyResponse>
+
+    @GET("api/enrollments")
+    suspend fun getEnrollments(): Response<EnrollmentsResponse>
 
     @GET("api/health")
     suspend fun healthCheck(): Response<Map<String, Any>>

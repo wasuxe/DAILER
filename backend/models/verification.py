@@ -30,6 +30,8 @@ class AletheiaResult(BaseModel):
     is_human: bool
     confidence: float = Field(..., ge=0.0, le=1.0)
     raw_scores: dict[str, float] = Field(default_factory=dict)
+    reason: Optional[str] = Field(default=None)
+    api_metadata: dict[str, str] = Field(default_factory=dict)
 
 
 class EidosResult(BaseModel):
@@ -39,6 +41,8 @@ class EidosResult(BaseModel):
     matched_name: Optional[str] = Field(default=None)
     threshold: float = Field(..., ge=0.0, le=1.0)
     is_match: bool
+    reason: Optional[str] = Field(default=None)
+    api_metadata: dict[str, str] = Field(default_factory=dict)
 
 
 class VerifyResponse(BaseModel):

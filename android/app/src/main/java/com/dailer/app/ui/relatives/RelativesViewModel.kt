@@ -15,6 +15,12 @@ class RelativesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val relatives: LiveData<List<RelativeEntity>> = repository.getAllRelatives().asLiveData()
 
+    fun refreshFromServer() {
+        viewModelScope.launch {
+            repository.syncEnrollmentsFromServer()
+        }
+    }
+
     fun removeRelative(relative: RelativeEntity) {
         viewModelScope.launch {
             repository.deleteEnrollment(relative)

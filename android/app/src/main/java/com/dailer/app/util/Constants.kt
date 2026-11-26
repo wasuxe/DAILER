@@ -9,6 +9,10 @@ val Context.dailerDataStore: DataStore<Preferences> by preferencesDataStore(
     name = Constants.DATASTORE_NAME
 )
 
+val Context.setupDataStore: DataStore<Preferences> by preferencesDataStore(
+    name = "dailer_settings"
+)
+
 object Constants {
     // Networking
     const val BASE_URL = "http://10.0.2.2:5000/"

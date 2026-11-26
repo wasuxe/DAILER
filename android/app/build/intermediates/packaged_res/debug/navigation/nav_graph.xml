@@ -78,4 +78,10 @@
         android:label="@string/dialer_title"
         tools:layout="@layout/fragment_in_call" />
 
+    <fragment
+        android:id="@+id/callHistoryFragment"
+        android:name="com.dailer.app.ui.history.CallHistoryFragment"
+        android:label="@string/history_title"
+        tools:layout="@layout/fragment_call_history" />
+
 </navigation>

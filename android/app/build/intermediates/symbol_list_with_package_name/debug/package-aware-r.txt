@@ -2163,6 +2163,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color surface_card
 color surface_dark
 color surface_light
 color switch_thumb_disabled_material_dark
@@ -3334,8 +3335,10 @@ id btnStar
 id btnSubmitEnrollment
 id buttonPanel
 id cache_measures
+id callHistoryFragment
 id callMeasure
 id cancel_button
+id cardCallHistory
 id cardComplete
 id cardDefaultDialer
 id cardPermissions
@@ -3491,6 +3494,7 @@ id inward
 id italic
 id item_touch_helper_previous_elevation
 id ivBannerIcon
+id ivCallStatusIcon
 id ivCompleteCheck
 id ivDialerCheck
 id ivPermissionsCheck
@@ -3652,6 +3656,7 @@ id right_side
 id rounded
 id row_index_key
 id rtl
+id rvCallHistory
 id rvRelatives
 id save_non_transition_alpha
 id save_overlay_view
@@ -3775,14 +3780,20 @@ id triangle
 id tvAvatarInitial
 id tvBannerSubtitle
 id tvBannerTitle
+id tvCallCaller
+id tvCallDetails
+id tvCallMeta
 id tvCallStatus
 id tvCallTimer
+id tvCallVerdictBadge
 id tvCallerName
 id tvCallerNumber
 id tvDialerRoleStatus
 id tvDialerTitle
+id tvEmptyHistory
 id tvEmptyRelatives
 id tvEnrollTitle
+id tvHistoryTitle
 id tvInviteToken
 id tvPermissionsStatus
 id tvPrompt
@@ -3970,6 +3981,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fingerprint_dialog_layout
+layout fragment_call_history
 layout fragment_enroll
 layout fragment_in_call
 layout fragment_qr_generator
@@ -3977,6 +3989,7 @@ layout fragment_relatives
 layout fragment_setup
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_call_history
 layout item_relative
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -4129,6 +4142,7 @@ string call_notification_incoming_text
 string call_notification_ongoing_text
 string call_notification_screening_text
 string call_state_active
+string call_state_active_recording
 string call_state_dialing
 string call_state_ended
 string call_state_ringing
@@ -4170,6 +4184,8 @@ string generic_error_no_device_credential
 string generic_error_no_keyguard
 string generic_error_user_canceled
 string hide_bottom_view_on_scroll_behavior
+string history_empty
+string history_title
 string icon_content_description
 string item_view_role_description
 string library_zxingandroidembedded_author
@@ -4284,6 +4300,7 @@ string mtrl_timepicker_confirm
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string nav_enroll
+string nav_history
 string nav_qr
 string nav_relatives
 string nav_setup

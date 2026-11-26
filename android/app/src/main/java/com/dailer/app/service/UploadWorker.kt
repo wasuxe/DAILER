@@ -92,9 +92,13 @@ class UploadWorker(
                 claimedRelativeId = resolvedRelativeId,
                 callRecordId = record.id
             )
+            Log.i(TAG, "Upload started for callId=${record.callId}, audioSize=${audioFile.length()} bytes")
 
             result.fold(
                 onSuccess = { response ->
+                    Log.i(TAG, "API response for callId=${record.callId}: verdict=${response.verdict}, " +
+                        "aletheia.isHuman=${response.aletheia?.isHuman}, aletheia.confidence=${response.aletheia?.confidence}, " +
+                        "eidos.matchScore=${response.eidos?.matchScore}")
                     val confidence = response.aletheia?.confidence ?: 0f
                     val syntheticScore = if (response.aletheia?.isHuman == false) 1f else 0f
                     val speakerScore = response.eidos?.matchScore ?: 0f
@@ -128,9 +132,12 @@ class UploadWorker(
                 },
                 onFailure = { error ->
                     Log.e(TAG, "Verification upload failed for callId=${record.callId}: ${error.message}", error)
-                    if (isRetryableNetworkError(error)) {
+                    if (isRetryableNetworkError(error) && runAttemptCount < 1) {
                         hasNetworkError = true
                     } else {
+                        if (isRetryableNetworkError(error)) {
+                            Log.e(TAG, "Verification API failed after retry for callId=${record.callId}; giving up.")
+                        }
                         audioFile.delete()
                         repository.updateCallRecord(
                             record.copy(
@@ -144,7 +151,7 @@ class UploadWorker(
             )
         }
 
-        return if (hasNetworkError && runAttemptCount < Constants.MAX_UPLOAD_RETRIES) {
+        return if (hasNetworkError) {
             Result.retry()
         } else {
             Result.success()
@@ -152,7 +159,9 @@ class UploadWorker(
     }
 
     private fun isWarningVerdict(response: VerifyResponse): Boolean {
-        return response.verdict == Constants.VERDICT_SCAM_WARNING || response.aletheia?.isHuman == false
+        return response.verdict.equals(Constants.VERDICT_SCAM_WARNING, ignoreCase = true) ||
+            response.verdict.equals("warning", ignoreCase = true) ||
+            response.aletheia?.isHuman == false
     }
 
     private fun isRetryableNetworkError(error: Throwable): Boolean {

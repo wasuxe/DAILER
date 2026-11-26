@@ -40,16 +40,17 @@ class VerificationBannerView @JvmOverloads constructor(
         setBannerState(BannerState.PENDING)
     }
 
-    fun setVerdict(status: String, name: String? = null) {
+    fun setVerdict(status: String, name: String? = null, reason: String? = null) {
         val mappedState = when (status.uppercase(Locale.US)) {
             Constants.VERDICT_VERIFIED -> BannerState.VERIFIED
             Constants.VERDICT_SCAM_WARNING, "WARNING" -> BannerState.WARNING
+            Constants.VERDICT_UNKNOWN -> BannerState.WARNING  // Timeout / unavailable
             else -> BannerState.PENDING
         }
-        setBannerState(mappedState, name)
+        setBannerState(mappedState, name, reason)
     }
 
-    fun setBannerState(state: BannerState, name: String? = null) {
+    fun setBannerState(state: BannerState, name: String? = null, reason: String? = null) {
         val targetBgColor: Int
         val targetStrokeColor: Int
 
@@ -70,7 +71,11 @@ class VerificationBannerView @JvmOverloads constructor(
                 } else {
                     binding.tvBannerTitle.setText(R.string.banner_verified_title)
                 }
-                binding.tvBannerSubtitle.setText(R.string.banner_verified_subtitle)
+                if (!reason.isNullOrBlank()) {
+                    binding.tvBannerSubtitle.text = reason
+                } else {
+                    binding.tvBannerSubtitle.setText(R.string.banner_verified_subtitle)
+                }
             }
             BannerState.WARNING -> {
                 targetBgColor = ContextCompat.getColor(context, R.color.warning_red_light)
@@ -81,7 +86,11 @@ class VerificationBannerView @JvmOverloads constructor(
                 } else {
                     binding.tvBannerTitle.setText(R.string.banner_warning_title)
                 }
-                binding.tvBannerSubtitle.setText(R.string.banner_warning_subtitle)
+                if (!reason.isNullOrBlank()) {
+                    binding.tvBannerSubtitle.text = reason
+                } else {
+                    binding.tvBannerSubtitle.setText(R.string.banner_warning_subtitle)
+                }
             }
         }
 

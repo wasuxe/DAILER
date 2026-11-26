@@ -1,6 +1,7 @@
 package com.dailer.app.ui.enrollment
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -93,7 +94,19 @@ class EnrollViewModel(application: Application) : AndroidViewModel(application) 
         _isLoading.value = true
         viewModelScope.launch {
             val audioBase64 = AudioUtils.fileToBase64(sampleFile)
+            if (audioBase64.isEmpty()) {
+                Log.e(TAG, "Recorded enrollment audio file is empty: ${sampleFile.absolutePath}")
+                _isLoading.value = false
+                _enrollStatus.value = Result.failure(
+                    IllegalStateException("Recorded audio is empty. Please record again.")
+                )
+                return@launch
+            }
             val normalizedPhone = AudioUtils.normalizePhoneNumber(phoneNumber)
+            Log.d(
+                TAG,
+                "Uploading enrollment: name=${name.trim()}, phone=$normalizedPhone, inviteToken=$inviteToken, audioBytes=${sampleFile.length()}"
+            )
             val result = repository.enrollRelative(
                 name = name.trim(),
                 phoneNumber = normalizedPhone,
@@ -101,9 +114,18 @@ class EnrollViewModel(application: Application) : AndroidViewModel(application) 
                 audioBase64 = audioBase64,
                 inviteToken = inviteToken
             )
+            result.onSuccess { entity ->
+                Log.i(TAG, "Enrollment succeeded: enrollmentId=${entity.enrollmentId}")
+            }.onFailure { error ->
+                Log.e(TAG, "Enrollment upload failed: ${error.message}", error)
+            }
             _isLoading.value = false
             _enrollStatus.value = result.map { it.enrollmentId }
         }
+    }
+
+    companion object {
+        private const val TAG = "EnrollViewModel"
     }
 
     fun clearEnrollStatus() {

@@ -14,6 +14,7 @@ from routes.health import health_bp
 from routes.verify import verify_bp
 from services.aletheia_service import AletheiaService
 from services.eidos_service import EidosService
+from services.speaker_isolation_service import SpeakerIsolationService
 from services.storage_service import StorageService
 from services.verdict_service import VerdictService
 
@@ -113,12 +114,14 @@ def create_app(config_class: Type[Config] = Config) -> Flask:
         match_threshold=config_class.EIDOS_MATCH_THRESHOLD,
     )
     verdict_service = VerdictService()
+    isolation_service = SpeakerIsolationService(storage_service=storage_service)
 
     app.extensions["services"] = {
         "storage": storage_service,
         "aletheia": aletheia_service,
         "eidos": eidos_service,
         "verdict": verdict_service,
+        "isolation": isolation_service,
     }
 
     app.register_blueprint(health_bp, url_prefix="/api")

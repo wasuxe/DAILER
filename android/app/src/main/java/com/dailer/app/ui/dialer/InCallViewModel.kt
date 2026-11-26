@@ -32,6 +32,14 @@ class InCallViewModel(application: Application) : AndroidViewModel(application) 
     val callerNumber: LiveData<String> = DailerInCallService.callState.map { it.phoneNumber }
     val recentRecords: LiveData<List<CallRecordEntity>> = repository.getAllCallRecords().asLiveData()
 
+    // Preserve the last-known caller number so verdict lookup works after disconnect
+    private var lastKnownCallerNumber: String = ""
+
+    // Verification timeout: set to true if no verdict arrives within 20s of call ending
+    private val _verificationTimedOut = MutableLiveData(false)
+    val verificationTimedOut: LiveData<Boolean> = _verificationTimedOut
+    private var verificationTimeoutJob: Job? = null
+
     private val _callerRelative = MutableLiveData<RelativeEntity?>(null)
     val callerRelative: LiveData<RelativeEntity?> = _callerRelative
 
@@ -49,6 +57,10 @@ class InCallViewModel(application: Application) : AndroidViewModel(application) 
     private val callStateObserver = Observer<CallState> { callStateObj ->
         if (callStateObj == null) return@Observer
         val normalized = AudioUtils.normalizePhoneNumber(callStateObj.phoneNumber)
+        // Preserve phone number while call is active or just connected
+        if (normalized.isNotBlank()) {
+            lastKnownCallerNumber = normalized
+        }
         viewModelScope.launch {
             _callerRelative.value = if (normalized.isNotBlank()) {
                 repository.getRelativeByPhone(normalized)
@@ -58,8 +70,11 @@ class InCallViewModel(application: Application) : AndroidViewModel(application) 
         }
         if (callStateObj.state == Call.STATE_ACTIVE) {
             startCallTimer()
+            _verificationTimedOut.value = false
+            verificationTimeoutJob?.cancel()
         } else if (callStateObj.state == Call.STATE_DISCONNECTED) {
             stopCallTimer()
+            startVerificationTimeout()
         }
     }
 
@@ -113,12 +128,50 @@ class InCallViewModel(application: Application) : AndroidViewModel(application) 
         audioManager?.isSpeakerphoneOn = next
     }
 
+    fun latestRecordForCaller(records: List<CallRecordEntity>, phone: String): CallRecordEntity? {
+        val effectivePhone = phone.ifBlank { lastKnownCallerNumber }
+        val normalized = AudioUtils.normalizePhoneNumber(effectivePhone)
+        if (normalized.isBlank()) return null
+        return records.firstOrNull {
+            AudioUtils.normalizePhoneNumber(it.phoneNumber) == normalized
+        }
+    }
+
     fun latestVerdictForCaller(records: List<CallRecordEntity>, phone: String): String {
-        val normalized = AudioUtils.normalizePhoneNumber(phone)
+        // Use preserved number if the live number is already cleared
+        val effectivePhone = phone.ifBlank { lastKnownCallerNumber }
+        val normalized = AudioUtils.normalizePhoneNumber(effectivePhone)
+        if (normalized.isBlank()) return Constants.VERDICT_ANALYZING
         val match = records.firstOrNull {
             AudioUtils.normalizePhoneNumber(it.phoneNumber) == normalized
         }
-        return match?.verdict ?: Constants.VERDICT_ANALYZING
+        val verdict = match?.verdict ?: Constants.VERDICT_ANALYZING
+        // If verdict arrived, cancel the timeout
+        if (verdict != Constants.VERDICT_ANALYZING && verdict != Constants.VERDICT_PENDING) {
+            verificationTimeoutJob?.cancel()
+            _verificationTimedOut.value = false
+        }
+        return verdict
+    }
+
+    /** Returns the preserved caller number even after disconnect */
+    fun getEffectiveCallerNumber(): String {
+        return callerNumber.value?.ifBlank { lastKnownCallerNumber } ?: lastKnownCallerNumber
+    }
+
+    /** Start a 20-second timeout; if verdict is still PENDING, signal timeout */
+    private fun startVerificationTimeout() {
+        verificationTimeoutJob?.cancel()
+        verificationTimeoutJob = viewModelScope.launch {
+            delay(20_000L)
+            // Check if verdict is still pending
+            val records = recentRecords.value.orEmpty()
+            val effectivePhone = getEffectiveCallerNumber()
+            val verdict = latestVerdictForCaller(records, effectivePhone)
+            if (verdict == Constants.VERDICT_ANALYZING || verdict == Constants.VERDICT_PENDING) {
+                _verificationTimedOut.value = true
+            }
+        }
     }
 
     fun isRinging(state: Int): Boolean = state == Call.STATE_RINGING

@@ -1,23 +1,19 @@
 package com.dailer.app.ui.setup
 
 import android.app.Application
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.dailer.app.data.remote.RetrofitClient
 import com.dailer.app.util.Constants
 import com.dailer.app.util.PermissionHelper
 import com.dailer.app.util.RoleManagerHelper
+import com.dailer.app.util.setupDataStore
 import kotlinx.coroutines.launch
-
-private val Context.setupDataStore: DataStore<Preferences> by preferencesDataStore(name = "dailer_settings")
 
 class SetupViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -43,7 +39,11 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
             dataStore.data.collect { prefs ->
                 val savedUrl = prefs[KEY_SERVER_URL]?.takeIf { it.isNotBlank() } ?: Constants.BASE_URL
                 _serverUrl.value = savedUrl
-                _isServerConfigured.value = isValidServerUrl(savedUrl)
+                val valid = isValidServerUrl(savedUrl)
+                _isServerConfigured.value = valid
+                if (valid) {
+                    RetrofitClient.setBaseUrl(savedUrl)
+                }
                 _isSetupComplete.value = prefs[KEY_SETUP_COMPLETE] ?: false
             }
         }
@@ -62,6 +62,7 @@ class SetupViewModel(application: Application) : AndroidViewModel(application) {
             return false
         }
         val normalized = if (trimmed.endsWith("/")) trimmed else "$trimmed/"
+        RetrofitClient.setBaseUrl(normalized)
         _serverUrl.value = normalized
         _isServerConfigured.value = true
 

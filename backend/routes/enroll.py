@@ -45,7 +45,7 @@ def enroll_speaker():
     storage = services["storage"]
 
     try:
-        enrollment_id = str(uuid.uuid4())
+        enrollment_id = (req.invite_token or "").strip() or str(uuid.uuid4())
         eidos.enroll_speaker(
             audio_bytes=audio_bytes,
             speaker_id=enrollment_id,

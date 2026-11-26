@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.relativesFragment,
+                R.id.callHistoryFragment,
                 R.id.enrollFragment,
                 R.id.qrGeneratorFragment,
                 R.id.setupFragment
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 putString("relativeName", data.getQueryParameter("name").orEmpty())
                 putString("phoneNumber", data.getQueryParameter("phone").orEmpty())
                 putString("relationship", data.getQueryParameter("relationship").orEmpty())
+                putString("serverUrl", data.getQueryParameter("server").orEmpty())
             }
             if (navController.currentDestination?.id == R.id.enrollFragment) {
                 navController.popBackStack()

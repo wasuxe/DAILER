@@ -20,8 +20,10 @@ import retrofit2.Response
 class DailerRepository(
     private val relativeDao: RelativeDao,
     private val callRecordDao: CallRecordDao,
-    private val apiService: ApiService = RetrofitClient.apiService
+    private val customApiService: ApiService? = null
 ) {
+    private val apiService: ApiService
+        get() = customApiService ?: RetrofitClient.apiService
 
     /**
      * Enrolls a relative's voiceprint with the backend and persists the record locally.
@@ -39,7 +41,8 @@ class DailerRepository(
                 name = name,
                 phoneNumber = phoneNumber,
                 audioBase64 = audioBase64,
-                relationship = relationship
+                relationship = relationship,
+                inviteToken = inviteToken?.takeIf { it.isNotBlank() }
             )
             val response = apiService.enroll(request)
             val body = response.requireBody("Enrollment")
@@ -89,6 +92,30 @@ class DailerRepository(
     }
 
     fun getAllRelatives(): Flow<List<RelativeEntity>> = relativeDao.getAll()
+
+    suspend fun syncEnrollmentsFromServer(): Result<Int> {
+        return safeCall {
+            val response = apiService.getEnrollments()
+            val body = response.requireBody("Sync enrollments")
+            var added = 0
+            for (remote in body.enrollments) {
+                if (relativeDao.getByEnrollmentId(remote.enrollmentId) == null) {
+                    relativeDao.insert(
+                        RelativeEntity(
+                            name = remote.name,
+                            phoneNumber = remote.phoneNumber,
+                            enrollmentId = remote.enrollmentId,
+                            enrolledAt = System.currentTimeMillis(),
+                            isVerified = true,
+                            relationship = remote.relationship
+                        )
+                    )
+                    added++
+                }
+            }
+            added
+        }
+    }
 
     fun getEnrolledCount(): Flow<Int> = relativeDao.getEnrolledCount()
 

@@ -1,1 +1,11 @@
-{}
+{
+  "ae8f4a8c-8acd-47c3-b0b0-be491fdd6d52": {
+    "enrollment_id": "ae8f4a8c-8acd-47c3-b0b0-be491fdd6d52",
+    "name": "waseem",
+    "phone_number": "+916006828108",
+    "relationship": "brother",
+    "embedding_path": "data\\storage\\embeddings\\ae8f4a8c-8acd-47c3-b0b0-be491fdd6d52.enc",
+    "created_at": "2026-11-26T05:08:33.182856Z",
+    "is_active": true
+  }
+}

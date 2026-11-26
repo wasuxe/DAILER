@@ -46,7 +46,10 @@
         <!-- Dialer Activity for ROLE_DIALER -->
         <activity
             android:name=".ui.dialer.DialerActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
                 <data android:scheme="tel" />
@@ -54,6 +57,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_TYPE_VOICE_IP_TO_CS_FALLBACK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

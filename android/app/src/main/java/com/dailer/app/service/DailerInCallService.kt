@@ -48,6 +48,7 @@ class DailerInCallService : InCallService() {
             when (state) {
                 Call.STATE_RINGING -> {
                     Log.i(TAG, "Call ringing from ${previous.phoneNumber}")
+                    launchDialerActivity()
                 }
                 Call.STATE_ACTIVE -> {
                     Log.i(TAG, "Call active with ${previous.phoneNumber}; starting automatic recording")
@@ -115,8 +116,21 @@ class DailerInCallService : InCallService() {
             )
         )
 
+        launchDialerActivity()
+
         if (call.state == Call.STATE_ACTIVE) {
             startRecordingService(phoneNumber, isIncoming)
+        }
+    }
+
+    private fun launchDialerActivity() {
+        runCatching {
+            val intent = Intent(this, com.dailer.app.ui.dialer.DialerActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            }
+            startActivity(intent)
+        }.onFailure { e ->
+            Log.e(TAG, "Failed to launch DialerActivity: ${e.message}", e)
         }
     }
 

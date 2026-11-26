@@ -51,7 +51,7 @@ def enroll_speaker():
             speaker_id=enrollment_id,
             name=req.name,
         )
-        embedding = eidos.extract_embedding(audio_bytes) if eidos.is_placeholder else []
+        embedding = eidos.extract_embedding(audio_bytes)
         storage.save_embedding(
             enrollment_id=enrollment_id,
             embedding=embedding,
@@ -63,7 +63,7 @@ def enroll_speaker():
         )
     except Exception as exc:
         logger.exception("Failed to enroll speaker: %s", exc)
-        return jsonify({"success": False, "error": "Failed to process voice enrollment."}), 500
+        return jsonify({"success": False, "error": f"Failed to process voice enrollment: {exc}"}), 500
 
     resp = EnrollmentResponse(
         success=True,

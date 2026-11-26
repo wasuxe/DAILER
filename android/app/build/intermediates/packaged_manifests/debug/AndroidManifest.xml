@@ -90,7 +90,10 @@
         <!-- Dialer Activity for ROLE_DIALER -->
         <activity
             android:name="com.dailer.app.ui.dialer.DialerActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:showOnLockScreen="true"
+            android:turnScreenOn="true" >
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
 
@@ -100,6 +103,11 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.DIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_TYPE_VOICE_IP_TO_CS_FALLBACK" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

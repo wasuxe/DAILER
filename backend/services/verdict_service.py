@@ -1,5 +1,6 @@
 """Verdict combination logic for Aletheia and Eidos verification results."""
 
+from config import Config
 from models.verification import AletheiaResult, EidosResult
 
 
@@ -35,39 +36,31 @@ class VerdictService:
         human_pct = int(round(aletheia.confidence * 100))
         match_pct = int(round(eidos.match_score * 100))
         thresh_pct = int(round(eidos.threshold * 100))
+        min_human_pct = int(round(Config.ALETHEIA_HUMAN_THRESHOLD * 100))
 
-        if aletheia.is_human and eidos.is_match:
+        if not aletheia.is_human or aletheia.confidence < Config.ALETHEIA_HUMAN_THRESHOLD:
+            return (
+                "warning",
+                (
+                    f"Warning: Low human confidence ({human_pct}% human < {min_human_pct}% required threshold). "
+                    f"Synthetic speech risk.{details}"
+                ),
+            )
+
+        if eidos.is_match:
             speaker_label = f" as {eidos.matched_name}" if eidos.matched_name else ""
             return (
                 "verified",
                 (
-                    f"Call verified{speaker_label}: natural human voice ({human_pct}% human) "
+                    f"Call verified{speaker_label}: natural human voice ({human_pct}% >= {min_human_pct}%) "
                     f"and matched enrolled voiceprint ({match_pct}% >= {thresh_pct}%).{details}"
                 ),
             )
 
-        if not aletheia.is_human and not eidos.is_match:
-            return (
-                "warning",
-                (
-                    f"Warning: AI-cloned speech detected ({100 - human_pct}% synthetic risk) and "
-                    f"voice did not match any enrolled relative ({match_pct}% < {thresh_pct}%).{details}"
-                ),
-            )
-
-        if not aletheia.is_human:
-            return (
-                "warning",
-                (
-                    f"Warning: Synthetic/AI-cloned speech detected ({100 - human_pct}% synthetic risk). "
-                    f"Do not trust this call without out-of-band verification.{details}"
-                ),
-            )
-
         return (
-            "warning",
+            "verified",
             (
-                f"Warning: Voice appears human ({human_pct}%), but speaker match was too low "
-                f"({match_pct}% < {thresh_pct}% required).{details}"
+                f"Human voice verified ({human_pct}% >= {min_human_pct}% required). "
+                f"Natural human speech.{details}"
             ),
         )

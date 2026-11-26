@@ -4,6 +4,7 @@ import com.dailer.app.BuildConfig
 import com.dailer.app.util.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -41,6 +42,13 @@ object RetrofitClient {
 
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
+            .addInterceptor(Interceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Bypass-Tunnel-Remainder", "true")
+                    .addHeader("bypass-tunnel-reminder", "true")
+                    .build()
+                chain.proceed(request)
+            })
             .addInterceptor(loggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
